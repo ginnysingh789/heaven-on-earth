@@ -11,13 +11,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copy files to Droplet
+      - name: Build Docker image on GitHub runner
+        run: docker build -t kashmir-booking:latest .
+
+      - name: Save Docker image to file
+        run: docker save kashmir-booking:latest | gzip > kashmir-booking.tar.gz
+
+      - name: Copy image + compose files to Droplet
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DROPLET_IP }}
           username: ${{ secrets.DROPLET_USER }}
           password: ${{ secrets.DROPLET_PASSWORD }}
-          source: "."
+          source: "kashmir-booking.tar.gz,docker-compose.yml,nginx"
           target: "/opt/kashmir-booking"
           overwrite: true
 
@@ -30,7 +36,8 @@ jobs:
           script: |
             cd /opt/kashmir-booking
             docker compose down
-            docker compose build --no-cache
+            docker load < kashmir-booking.tar.gz
+            rm kashmir-booking.tar.gz
             docker compose up -d
             docker system prune -f
             echo "Deployment complete!"

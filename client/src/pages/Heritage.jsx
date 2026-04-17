@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Bookmark, Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2 } from 'lucide-react';
+import { Bookmark, Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2, MessageCircle } from 'lucide-react';
+import { buildWhatsAppUrl } from '../utils/whatsapp';
 
 const heritageItems = [
   {
@@ -252,6 +253,14 @@ function HeritageDetail({ item }) {
           <button onClick={() => setLightboxIdx(0)} className="flex items-center gap-1.5 border border-slate-200 rounded-md px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
             <Camera className="w-3.5 h-3.5 text-[#FF8C00]" /> {item.photos} photos
           </button>
+          <a
+            href={buildWhatsAppUrl(item.title)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-green-500 hover:bg-green-600 text-white rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+          >
+            <MessageCircle className="w-3.5 h-3.5" /> Enquire Now
+          </a>
         </div>
 
         {/* 3-image carousel with smooth crossfade */}
@@ -453,9 +462,21 @@ export default function Heritage() {
                 </div>
 
                 {/* CTA */}
-                <button className="mt-3 w-full py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 text-sm font-semibold hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-200">
-                  Explore
-                </button>
+                <div className="flex gap-2 mt-3">
+                  <button className="flex-1 py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 text-sm font-semibold hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-200">
+                    Explore
+                  </button>
+                  <a
+                    href={buildWhatsAppUrl(item.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Enquire
+                  </a>
+                </div>
               </div>
             </Link>
           ))}

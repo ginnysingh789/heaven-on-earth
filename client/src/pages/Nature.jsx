@@ -7,10 +7,10 @@ const natureItems = [
     id: 'eco-trail',
     title: 'Eco Trail',
     subtitle: 'Mahadev Peak - Shankaracharya',
-    coverImage: '/nature/3-6.JPG',
+    coverImage: '/nature/3-6.jpg',
     images: [
       '/nature/1-6.jpg',
-      '/nature/3-6.JPG',
+      '/nature/3-6.jpg',
       '/nature/4-6.jpg',
       '/nature/eco-trail.jpg'
     ],

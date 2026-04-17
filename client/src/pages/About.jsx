@@ -1,5 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Film } from 'lucide-react';
+
+const XIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const experienceTabs = [
   {
@@ -50,10 +57,36 @@ const experienceTabs = [
 ];
 
 const teamMembers = [
-  { name: 'Tufail Shah', role: 'Photography & Film Making', image: '/about/Mask-group-15.png' },
-  { name: 'Avijit Kohli', role: 'Photography & Film Making', image: '/about/Mask-group-16.png' },
-  { name: 'Sahran Malik', role: 'Photography & Film Making', image: '/about/Mask-group-17.png' },
-  { name: 'Sameer Hamdani', role: 'Architectural historian', image: '/about/Mask-group-18.png' },
+  {
+    name: 'Tufail Shah', role: 'Photography & Film Making', image: '/about/Mask-group-15.png',
+    socials: [
+      { icon: 'twitter', url: 'https://x.com/Tufailshahh' },
+      { icon: 'facebook', url: 'https://www.facebook.com/tufail.shah' },
+      { icon: 'instagram', url: 'https://www.instagram.com/outdoorshortz' },
+      { icon: 'imdb', url: 'https://pro.imdb.com/name/nm14314067/public/' },
+    ],
+  },
+  {
+    name: 'Avijit Kohli', role: 'Photography & Film Making', image: '/about/Mask-group-16.png',
+    socials: [
+      { icon: 'facebook', url: 'https://www.facebook.com/avijitkohli' },
+      { icon: 'instagram', url: 'https://www.instagram.com/avijitkohli' },
+    ],
+  },
+  {
+    name: 'Sahran Malik', role: 'Photography & Film Making', image: '/about/Mask-group-17.png',
+    socials: [
+      { icon: 'twitter', url: 'https://x.com/sahranmalik' },
+      { icon: 'facebook', url: 'https://www.facebook.com/Sahran.Malik/' },
+      { icon: 'instagram', url: 'https://www.instagram.com/sahran_malik' },
+    ],
+  },
+  {
+    name: 'Sameer Hamdani', role: 'Architectural historian', image: '/about/Mask-group-18.png',
+    socials: [
+      { icon: 'twitter', url: 'https://x.com/SameerHamdani' },
+    ],
+  },
 ];
 
 export default function About() {
@@ -65,12 +98,11 @@ export default function About() {
 
       {/* Hero Banner */}
       <div className="relative h-[340px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1596796930007-11ad4fa34da4?w=2400&auto=format&fit=crop&q=80"
-          alt="Kashmir Tulip Fields"
-          className="absolute inset-0 w-full h-full object-cover"
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/IMG_5977.jpg')" }}
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-slate-700/60" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
           <h1 className="font-serif text-5xl md:text-6xl font-bold mb-3">About Us</h1>
           <p className="text-white/80 text-sm">
@@ -137,13 +169,32 @@ export default function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, i) => (
               <div key={i} className="group">
-                <div className="rounded-2xl overflow-hidden mb-4 aspect-[3/4] bg-slate-200">
+                <div className="relative rounded-2xl overflow-hidden mb-4 aspect-[3/4] bg-slate-200">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
+                  {/* Social icons overlay on hover */}
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                    <div className="flex gap-3">
+                      {member.socials?.map((s, si) => (
+                        <a
+                          key={si}
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-9 h-9 bg-white/20 hover:bg-[#FF8C00] rounded-full flex items-center justify-center transition-all duration-200"
+                        >
+                          {s.icon === 'twitter' && <XIcon className="w-4 h-4 text-white" />}
+                          {s.icon === 'facebook' && <Facebook className="w-4 h-4 text-white" />}
+                          {s.icon === 'instagram' && <Instagram className="w-4 h-4 text-white" />}
+                          {s.icon === 'imdb' && <Film className="w-4 h-4 text-white" />}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
                 <p className="text-slate-500 text-sm">{member.role}</p>
