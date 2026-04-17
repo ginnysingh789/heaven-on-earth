@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    image: kashmir-booking:latest
     container_name: kashmir-booking
     restart: unless-stopped
     expose:
