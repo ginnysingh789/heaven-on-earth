@@ -1,0 +1,12 @@
+node_modules
+client/node_modules
+client/dist
+.env
+.env.local
+.env.production
+.git
+.github
+.vscode
+*.md
+.gitignore
+.dockerignore
