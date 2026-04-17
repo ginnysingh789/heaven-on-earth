@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom';
 import { getContactConfig } from '../utils/whatsapp';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
+
+const XIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export default function Footer() {
   const { contactPhone, contactEmail } = getContactConfig();
@@ -33,17 +40,17 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex space-x-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
-                <span className="material-icons text-sm text-slate-300 group-hover:text-white">facebook</span>
+              <a href="https://www.youtube.com/@kmrOffbeat" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
+                <Youtube className="w-4 h-4 text-slate-300 group-hover:text-white" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
-                <span className="material-icons text-sm text-slate-300 group-hover:text-white">photo_camera</span>
+              <a href="https://x.com/kash_offbeat" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
+                <XIcon className="w-4 h-4 text-slate-300 group-hover:text-white" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
-                <span className="material-icons text-sm text-slate-300 group-hover:text-white">tag</span>
+              <a href="https://www.facebook.com/kashmiroffbeat" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
+                <Facebook className="w-4 h-4 text-slate-300 group-hover:text-white" />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
-                <span className="material-icons text-sm text-slate-300 group-hover:text-white">play_arrow</span>
+              <a href="https://www.instagram.com/kash_offbeat" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border-2 border-slate-700 flex items-center justify-center hover:bg-[#FF8C00] hover:border-[#FF8C00] transition-all duration-300 group">
+                <Instagram className="w-4 h-4 text-slate-300 group-hover:text-white" />
               </a>
             </div>
           </div>

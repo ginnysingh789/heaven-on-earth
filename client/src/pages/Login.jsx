@@ -69,11 +69,6 @@ export default function Login() {
             Don't have an account? <Link to="/register" className="text-[#FF8C00] font-semibold hover:underline">Register</Link>
           </p>
 
-          <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-            <p className="text-xs text-slate-500 font-semibold">Demo Credentials:</p>
-            <p className="text-xs text-slate-600 mt-1">Admin: admin@kashmirtravels.com / admin123</p>
-            <p className="text-xs text-slate-600">User: user@test.com / user123</p>
-          </div>
         </div>
       </div>
     </div>

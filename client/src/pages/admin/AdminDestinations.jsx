@@ -220,8 +220,25 @@ export default function AdminDestinations() {
                     <div>
                       <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Weather Icon</label>
                       <div className="flex items-center gap-2">
-                        <input value={form.weatherIcon} onChange={e => setForm(f => ({ ...f, weatherIcon: e.target.value }))}
-                          className={inputCls()} placeholder="wb_sunny" />
+                        <select value={form.weatherIcon} onChange={e => setForm(f => ({ ...f, weatherIcon: e.target.value }))}
+                          className={inputCls()}>
+                          {[
+                            { value: 'wb_sunny', label: 'Sunny' },
+                            { value: 'partly_cloudy_day', label: 'Partly Cloudy' },
+                            { value: 'cloud', label: 'Cloudy' },
+                            { value: 'grain', label: 'Rain' },
+                            { value: 'thunderstorm', label: 'Thunderstorm' },
+                            { value: 'ac_unit', label: 'Snow' },
+                            { value: 'foggy', label: 'Foggy' },
+                            { value: 'air', label: 'Windy' },
+                            { value: 'nights_stay', label: 'Clear Night' },
+                            { value: 'wb_cloudy', label: 'Overcast' },
+                            { value: 'water_drop', label: 'Drizzle' },
+                            { value: 'wb_twilight', label: 'Twilight' },
+                          ].map(opt => (
+                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          ))}
+                        </select>
                         {form.weatherIcon && <span className="material-icons text-yellow-400 text-2xl flex-shrink-0">{form.weatherIcon}</span>}
                       </div>
                     </div>
