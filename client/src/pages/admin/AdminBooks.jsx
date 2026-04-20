@@ -186,11 +186,6 @@ export default function AdminBooks() {
                     className="w-full bg-slate-100 border-slate-300 rounded-lg px-4 py-2 text-sm text-slate-800" />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price (₹)</label>
-                  <input type="number" value={form.price.amount} onChange={e => setForm({...form, price: {amount: e.target.value}})}
-                    className="w-full bg-slate-100 border-slate-300 rounded-lg px-4 py-2 text-sm text-slate-800" />
-                </div>
-                <div>
                   <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Availability</label>
                   <select value={form.availability} onChange={e => setForm({...form, availability: e.target.value})}
                     className="w-full bg-slate-100 border-slate-300 rounded-lg px-4 py-2 text-sm text-slate-800">

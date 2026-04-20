@@ -38,7 +38,7 @@ export default function BookingSuccess() {
             <div className="flex items-center gap-4 pb-6 border-b border-gray-200">
               <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
                 <img 
-                  src={booking.hotel?.coverImage || booking.hotel?.image || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'} 
+                  src={booking.hotel?.coverImage || booking.hotel?.image || 'https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=800'} 
                   alt="Hotel"
                   className="w-full h-full object-cover"
                 />
@@ -68,7 +68,7 @@ export default function BookingSuccess() {
               </div>
               <div>
                 <p className="text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Total Amount</p>
-                <p className="font-bold text-[#FF8C00] text-xl">₹{booking.pricing?.totalAmount?.toLocaleString()}</p>
+                <p className="font-bold text-[#FF8C00] text-xl">Confirmed</p>
               </div>
             </div>
 

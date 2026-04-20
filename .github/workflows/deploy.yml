@@ -27,7 +27,7 @@ jobs:
           target: "/opt/kashmir-booking"
           overwrite: true
 
-      - name: Deploy on Droplet
+      - name: Generate .env and Deploy on Droplet
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.DROPLET_IP }}
@@ -35,9 +35,31 @@ jobs:
           password: ${{ secrets.DROPLET_PASSWORD }}
           script: |
             cd /opt/kashmir-booking
+
+            # Auto-generate .env from GitHub Secrets
+            cat > .env <<EOF
+            NODE_ENV=production
+            PORT=5000
+            MONGO_URI=${{ secrets.MONGO_URI }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
+            CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
+            CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
+            EOF
+
+            # Remove leading whitespace from heredoc
+            sed -i 's/^[[:space:]]*//' .env
+
+            echo ".env generated from GitHub Secrets"
+
+            # Deploy containers
             docker compose down
             docker load < kashmir-booking.tar.gz
             rm kashmir-booking.tar.gz
             docker compose up -d
+
+            # Seed the database (runs inside the container)
+            docker exec kashmir-booking node /app/server/seedActivities.js || echo "Seed skipped or already done"
+
             docker system prune -f
             echo "Deployment complete!"

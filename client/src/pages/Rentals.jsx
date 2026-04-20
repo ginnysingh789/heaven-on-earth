@@ -40,7 +40,7 @@ export default function Rentals() {
       <div className="relative py-24 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=2400&auto=format&fit=crop&q=95)' }}
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3889843/pexels-photo-3889843.jpeg?auto=compress&cs=tinysrgb&w=2400)' }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
         </div>
@@ -81,8 +81,6 @@ export default function Rentals() {
                 image={rental.coverImage}
                 title={rental.name}
                 description={rental.description}
-                price={`₹${rental.pricing.perDay.toLocaleString()}`}
-                priceUnit="/day"
                 tags={[rental.category, `${rental.capacity?.passengers} Passengers`].filter(Boolean)}
               />
             ))}

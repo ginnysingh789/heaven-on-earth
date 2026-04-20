@@ -38,7 +38,7 @@ export default function Hotels() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
       <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1566073771259-6a8506099945?w=2400&auto=format&fit=crop&q=80)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://i.pinimg.com/originals/ea/92/a1/ea92a19d01432cbda59261be7154afd9.jpg)' }}>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">

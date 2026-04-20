@@ -86,11 +86,6 @@ export default function Books() {
                 {book.isClassic && (
                   <div className="absolute top-2 left-2 bg-purple-600 text-white px-2 py-0.5 rounded-full text-[10px] font-bold">Classic</div>
                 )}
-                {book.price && (
-                  <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm text-slate-900 px-2 py-0.5 rounded-full text-xs font-bold shadow">
-                    ₹{book.price.toLocaleString()}
-                  </div>
-                )}
               </div>
               <div className="flex flex-col flex-1 p-3 gap-1">
                 <h3 className="text-xs font-bold text-slate-900 line-clamp-2 leading-tight">{book.title}</h3>

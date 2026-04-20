@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Bookmark, Star } from 'lucide-react';
+import { Star, MessageCircle, Mail } from 'lucide-react';
+import { buildWhatsAppUrl, buildEmailUrl } from '../utils/whatsapp';
 
 export default function HotelCard({ hotel }) {
   const rating = hotel.rating || 4.5;
@@ -19,14 +20,6 @@ export default function HotelCard({ hotel }) {
         />
         {/* Dark gradient fade at bottom of image */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        {/* Bookmark */}
-        <div className="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
-          <Bookmark className="w-4 h-4 text-slate-700" />
-        </div>
-        {/* Price pill on image */}
-        <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1 rounded-full text-sm font-bold shadow">
-          ₹{hotel.startingPrice?.toLocaleString()}<span className="text-xs font-medium text-slate-500">/night</span>
-        </div>
       </div>
 
       {/* Content */}
@@ -54,10 +47,27 @@ export default function HotelCard({ hotel }) {
           ))}
         </div>
 
-        {/* Enquiry button */}
-        <button className="mt-auto w-full py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 text-sm font-semibold hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-200 mt-3">
-          Enquiry on WhatsApp
-        </button>
+        {/* CTA – WhatsApp + Email */}
+        <div className="flex gap-2 mt-3">
+          <a
+            href={buildWhatsAppUrl(hotel.name)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200"
+          >
+            <MessageCircle className="w-4 h-4" />
+            WhatsApp
+          </a>
+          <a
+            href={buildEmailUrl(hotel.name)}
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200"
+          >
+            <Mail className="w-4 h-4" />
+            Email
+          </a>
+        </div>
       </div>
     </Link>
   );

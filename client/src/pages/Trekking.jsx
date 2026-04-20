@@ -38,7 +38,7 @@ export default function Trekking() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
       <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1486911278844-a81c5267e227?w=2400&auto=format&fit=crop&q=80)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=2400)' }}>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">
@@ -78,8 +78,6 @@ export default function Trekking() {
                 image={trek.coverImage}
                 title={trek.name}
                 description={trek.overview}
-                price={`₹${trek.pricing.perPerson.toLocaleString()}`}
-                priceUnit="/person"
                 tags={[trek.difficulty, `${trek.duration.days} Day Trek`]}
               />
             ))}

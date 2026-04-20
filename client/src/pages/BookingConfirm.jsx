@@ -117,7 +117,7 @@ export default function BookingConfirm() {
             <section className="bg-white rounded-2xl p-8 shadow-sm border-2 border-gray-200">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-100">
-                  <img className="w-full h-full object-cover" src={bookingData.hotel?.coverImage || bookingData.hotel?.image || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop'} alt="Property" />
+                  <img className="w-full h-full object-cover" src={bookingData.hotel?.coverImage || bookingData.hotel?.image || 'https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=800'} alt="Property" />
                 </div>
                 <div>
                   <h3 className="font-bold text-xl text-slate-900">{bookingData.hotel?.name || bookingData.package?.name || bookingData.trek?.name || 'Booking'}</h3>
@@ -267,31 +267,11 @@ export default function BookingConfirm() {
             </section>
           </div>
 
-          {/* Right Section: Price Breakdown */}
+          {/* Right Section: Confirm */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             <section className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
-              <h4 className="font-bold text-2xl text-slate-900 mb-8">Fare Breakdown</h4>
-              <div className="space-y-5">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-600 font-medium">Base Price</span>
-                  <span className="text-slate-900 font-bold">₹{((bookingData.total || 0) / 1.12).toFixed(0).toLocaleString()}</span>
-                </div>
-                <div className="pt-5 border-t border-gray-200 flex justify-between items-center">
-                  <span className="text-slate-600 font-medium">Tax (12% GST)</span>
-                  <span className="text-slate-900 font-bold">₹{((bookingData.total || 0) - ((bookingData.total || 0) / 1.12)).toFixed(0).toLocaleString()}</span>
-                </div>
-                <div className="mt-8 p-6 bg-orange-50 rounded-2xl flex justify-between items-center border-2 border-[#FF8C00]/20">
-                  <div>
-                    <p className="text-xs font-bold text-[#FF8C00] uppercase tracking-widest">Grand Total</p>
-                    <p className="text-3xl font-bold text-[#FF8C00]">₹{(bookingData.total || 0).toLocaleString()}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-slate-600 font-medium">All taxes included</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 space-y-4">
+              <h4 className="font-bold text-2xl text-slate-900 mb-8">Confirm Booking</h4>
+              <div className="space-y-4">
                 <button 
                   onClick={handleConfirmPayment} 
                   disabled={submitting}

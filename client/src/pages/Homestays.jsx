@@ -34,7 +34,7 @@ export default function Homestays() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
       <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=2400&auto=format&fit=crop&q=80)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://static.toiimg.com/thumb/105788955/Highlands-Park.jpg?width=636&height=358&resize=4)' }}>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">
@@ -80,8 +80,6 @@ export default function Homestays() {
                 image={homestay.coverImage}
                 title={homestay.name}
                 description={homestay.description}
-                price={`₹${homestay.pricing.perNight.toLocaleString()}`}
-                priceUnit="/night"
                 tags={[homestay.location, homestay.isVerified ? 'Verified' : null].filter(Boolean)}
               />
             ))}

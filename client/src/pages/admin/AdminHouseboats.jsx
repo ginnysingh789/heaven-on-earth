@@ -6,7 +6,7 @@ const STEPS = [
   { id: 0, label: 'Basic Info', icon: 'info' },
   { id: 1, label: 'Image',      icon: 'image' },
   { id: 2, label: 'Details',    icon: 'sailing' },
-  { id: 3, label: 'Pricing',    icon: 'payments' },
+  { id: 3, label: 'Services',   icon: 'room_service' },
   { id: 4, label: 'Extras',     icon: 'star' },
 ];
 
@@ -34,7 +34,6 @@ function validateStep(step, form) {
     if (!form.coverImage.trim() && form.images.length === 0) errs.coverImage = 'At least one image is required';
   }
   if (step === 3) {
-    if (!form.pricing.perNight) errs.perNight = 'Price per night is required';
   }
   return errs;
 }
@@ -338,20 +337,9 @@ export default function AdminHouseboats() {
                 </div>
               )}
 
-              {/* Step 3 – Pricing */}
+              {/* Step 3 – Meals & Services */}
               {step === 3 && (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Night <span className="text-red-500">*</span></label>
-                      <input type="number" value={form.pricing.perNight} onChange={e => setForm(f => ({...f, pricing: {...f.pricing, perNight: e.target.value}}))} className={inputCls(errors.perNight)} />
-                      <ErrMsg msg={errors.perNight} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Week</label>
-                      <input type="number" value={form.pricing.perWeek} onChange={e => setForm(f => ({...f, pricing: {...f.pricing, perWeek: e.target.value}}))} className={inputCls()} />
-                    </div>
-                  </div>
                   <div className="p-3 bg-slate-100/40 rounded-lg">
                     <label className="text-xs font-bold text-slate-500 uppercase block mb-2">Meals & Services</label>
                     <div className="flex gap-5 flex-wrap">
@@ -424,7 +412,6 @@ export default function AdminHouseboats() {
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Houseboat</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Category</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Lake</th>
-                <th className="px-4 py-4 font-bold text-slate-500 text-sm">Price</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Availability</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm text-right">Actions</th>
               </tr>
@@ -440,7 +427,6 @@ export default function AdminHouseboats() {
                   </td>
                   <td className="px-4 py-4 text-slate-600 capitalize">{houseboat.category.replace('-', ' ')}</td>
                   <td className="px-4 py-4 text-slate-600 capitalize">{houseboat.lake.replace('-', ' ')}</td>
-                  <td className="px-4 py-4 font-bold text-[#FF8C00]">₹{houseboat.pricing.perNight.toLocaleString()}</td>
                   <td className="px-4 py-4">
                     <span className={`px-2 py-1 rounded text-xs font-bold ${
                       houseboat.availability === 'available' ? 'bg-green-500/20 text-green-500' :

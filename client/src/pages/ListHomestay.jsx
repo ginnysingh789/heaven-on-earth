@@ -19,7 +19,7 @@ export default function ListHomestay() {
         email: form.email,
         phone: form.phone,
         enquiryType: 'general',
-        message: `HOMESTAY LISTING REQUEST\n\nHomestay Name: ${form.name}\nHost: ${form.hostName}\nLocation: ${form.location}, ${form.region}\nRooms: ${form.rooms}\nGuests: ${form.guests}\nPrice: ₹${form.pricePerNight}/night\nMeals: ${form.mealsBreakfast ? 'Breakfast' : ''} ${form.mealsDinner ? 'Dinner' : ''}\nAmenities: ${form.amenities}\nLanguages: ${form.languages}\nImages: ${form.images}\n\nDescription: ${form.description}\n\nAdditional Message: ${form.message}`,
+        message: `HOMESTAY LISTING REQUEST\n\nHomestay Name: ${form.name}\nHost: ${form.hostName}\nLocation: ${form.location}, ${form.region}\nRooms: ${form.rooms}\nGuests: ${form.guests}\nMeals: ${form.mealsBreakfast ? 'Breakfast' : ''} ${form.mealsDinner ? 'Dinner' : ''}\nAmenities: ${form.amenities}\nLanguages: ${form.languages}\nImages: ${form.images}\n\nDescription: ${form.description}\n\nAdditional Message: ${form.message}`,
         groupSize: { adults: 0, children: 0, infants: 0 }
       });
       setSubmitted(true);
@@ -133,11 +133,6 @@ export default function ListHomestay() {
             <div>
               <label className="text-sm font-bold text-slate-400 uppercase block mb-2">Guest Capacity *</label>
               <input type="number" required min="1" value={form.guests} onChange={e => setForm({...form, guests: e.target.value})}
-                className="w-full bg-slate-800 border-slate-700 rounded-lg px-4 py-3 text-white" />
-            </div>
-            <div>
-              <label className="text-sm font-bold text-slate-400 uppercase block mb-2">Price per Night (₹) *</label>
-              <input type="number" required min="0" value={form.pricePerNight} onChange={e => setForm({...form, pricePerNight: e.target.value})}
                 className="w-full bg-slate-800 border-slate-700 rounded-lg px-4 py-3 text-white" />
             </div>
           </div>

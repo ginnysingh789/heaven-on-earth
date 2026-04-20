@@ -32,7 +32,6 @@ function validateStep(step, form) {
     if (!form.image.trim() && form.images.length === 0) errs.image = 'At least one image is required';
   }
   if (step === 2) {
-    if (!form.startingPrice) errs.startingPrice = 'Starting price is required';
   }
   return errs;
 }
@@ -285,11 +284,6 @@ export default function AdminHotels() {
                       </select>
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price (₹) <span className="text-red-500">*</span></label>
-                      <input type="number" value={form.startingPrice} onChange={e => setForm(f => ({...f, startingPrice: e.target.value}))} className={inputCls(errors.startingPrice)} />
-                      <ErrMsg msg={errors.startingPrice} />
-                    </div>
-                    <div>
                       <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Rating</label>
                       <input type="number" step="0.1" min="0" max="5" value={form.rating} onChange={e => setForm(f => ({...f, rating: e.target.value}))} className={inputCls()} />
                     </div>
@@ -382,7 +376,6 @@ export default function AdminHotels() {
                   <th className="px-6 py-4 font-bold">Hotel</th>
                   <th className="px-6 py-4 font-bold">Destination</th>
                   <th className="px-6 py-4 font-bold">Category</th>
-                  <th className="px-6 py-4 font-bold">Price</th>
                   <th className="px-6 py-4 font-bold">Rating</th>
                   <th className="px-6 py-4 font-bold">Featured</th>
                   <th className="px-6 py-4 font-bold text-right">Actions</th>
@@ -402,7 +395,6 @@ export default function AdminHotels() {
                     </td>
                     <td className="px-6 py-4 text-slate-600">{hotel.destination?.name || '-'}</td>
                     <td className="px-6 py-4 capitalize text-slate-600">{hotel.category}</td>
-                    <td className="px-6 py-4 font-medium text-[#FF8C00]">₹{hotel.startingPrice?.toLocaleString()}</td>
                     <td className="px-6 py-4">
                       <span className="flex items-center gap-1 text-yellow-500">
                         <span className="material-icons text-xs">star</span> {hotel.rating}

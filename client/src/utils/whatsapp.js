@@ -38,6 +38,13 @@ export function buildWhatsAppUrl(itemName) {
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
+export function buildEmailUrl(itemName) {
+  const { contactEmail } = getContactConfig();
+  const subject = `Enquiry about ${itemName || 'your services'}`;
+  const body = `Hi Kashmir Offbeat,\n\nI'm interested in ${itemName || 'your services'}.\n\nCould you please share more details about:\n- Availability & dates\n- Packages & inclusions\n- Pickup/drop arrangements\n\nLooking forward to hearing from you!`;
+  return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export function getContactConfig() {
   try {
     const stored = localStorage.getItem(CONTACT_STORAGE_KEY);

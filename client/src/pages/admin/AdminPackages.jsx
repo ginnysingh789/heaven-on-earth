@@ -35,7 +35,6 @@ function validateStep(step, form) {
   if (step === 2) {
     if (!form.duration.nights)      errs.nights    = 'Number of nights is required';
     if (!form.duration.days)        errs.days      = 'Number of days is required';
-    if (!form.pricing.perPerson)    errs.perPerson = 'Price per person is required';
   }
   return errs;
 }
@@ -314,15 +313,6 @@ export default function AdminPackages() {
                   </div>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Person <span className="text-red-500">*</span></label>
-                      <input type="number" value={form.pricing.perPerson} onChange={e => setForm(f => ({...f, pricing: {...f.pricing, perPerson: e.target.value}}))} className={inputCls(errors.perPerson)} placeholder="₹" />
-                      <ErrMsg msg={errors.perPerson} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Couple</label>
-                      <input type="number" value={form.pricing.perCouple} onChange={e => setForm(f => ({...f, pricing: {...f.pricing, perCouple: e.target.value}}))} className={inputCls()} />
-                    </div>
-                    <div>
                       <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Difficulty</label>
                       <select value={form.difficulty} onChange={e => setForm(f => ({...f, difficulty: e.target.value}))} className={inputCls()}>
                         <option value="easy">Easy</option>
@@ -412,7 +402,6 @@ export default function AdminPackages() {
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Package</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Category</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Duration</th>
-                <th className="px-4 py-4 font-bold text-slate-500 text-sm">Price</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Status</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm text-right">Actions</th>
               </tr>
@@ -431,7 +420,6 @@ export default function AdminPackages() {
                   </td>
                   <td className="px-4 py-4 text-slate-600 capitalize">{pkg.category.replace('-', ' ')}</td>
                   <td className="px-4 py-4 text-slate-600">{pkg.duration.nights}N/{pkg.duration.days}D</td>
-                  <td className="px-4 py-4 font-bold text-[#FF8C00]">₹{pkg.pricing.perPerson.toLocaleString()}</td>
                   <td className="px-4 py-4">
                     {pkg.isFeatured && <span className="bg-orange-50 text-[#FF8C00] px-2 py-1 rounded text-xs font-bold">FEATURED</span>}
                   </td>

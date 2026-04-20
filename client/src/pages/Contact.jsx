@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import api from '../api';
+import { getContactConfig } from '../utils/whatsapp';
 
 export default function Contact() {
+  const { contactPhone, contactEmail } = getContactConfig();
   const [form, setForm] = useState({
     name: '', email: '', phone: '', message: ''
   });
@@ -112,7 +114,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-1">Phone</h3>
-                  <p className="text-slate-600">+91 98765 43210<br />+91 98765 43211</p>
+                  <p className="text-slate-600">{contactPhone}</p>
                 </div>
               </div>
 
@@ -122,7 +124,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-1">Email</h3>
-                  <p className="text-slate-600">info@kashmirtravels.com<br />bookings@kashmirtravels.com</p>
+                  <p className="text-slate-600">{contactEmail}</p>
                 </div>
               </div>
 
@@ -141,19 +143,19 @@ export default function Contact() {
           <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-sm">
             <h3 className="text-xl font-bold text-slate-900 mb-4">Connect With Us</h3>
             <div className="flex gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.facebook.com/kashmiroffbeat" target="_blank" rel="noopener noreferrer"
                 className="bg-gray-100 hover:bg-orange-50 p-3 rounded-lg transition-all border-2 border-gray-200 hover:border-[#FF8C00]">
                 <span className="material-icons text-slate-700">facebook</span>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.instagram.com/kash_offbeat" target="_blank" rel="noopener noreferrer"
                 className="bg-gray-100 hover:bg-orange-50 p-3 rounded-lg transition-all border-2 border-gray-200 hover:border-[#FF8C00]">
                 <span className="material-icons text-slate-700">camera_alt</span>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://x.com/kash_offbeat" target="_blank" rel="noopener noreferrer"
                 className="bg-gray-100 hover:bg-orange-50 p-3 rounded-lg transition-all border-2 border-gray-200 hover:border-[#FF8C00]">
                 <span className="material-icons text-slate-700">tag</span>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.youtube.com/@kmrOffbeat" target="_blank" rel="noopener noreferrer"
                 className="bg-gray-100 hover:bg-orange-50 p-3 rounded-lg transition-all border-2 border-gray-200 hover:border-[#FF8C00]">
                 <span className="material-icons text-slate-700">play_circle</span>
               </a>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Bookmark, Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2 } from 'lucide-react';
+import { Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2, MessageCircle, Mail } from 'lucide-react';
+import { buildWhatsAppUrl, buildEmailUrl } from '../utils/whatsapp';
 
 const natureItems = [
   {
@@ -58,11 +59,11 @@ const natureItems = [
     id: 'birding',
     title: 'Birding',
     subtitle: 'Dachigam',
-    coverImage:   'https://images.unsplash.com/photo-1480044965905-02098d419e96?w=1200&auto=format&fit=crop&q=80',
+    coverImage:   'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200',
     images: [
       "/nature/Bird-1.jpg",
-      'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=1200&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1480044965905-02098d419e96?w=1200&auto=format&fit=crop&q=80',
+      'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1200',
     ],
     videoCount: 1,
     photoCount: 3,
@@ -199,8 +200,8 @@ const natureItems = [
     ]
   },
   {
-    id: 'flora-trail',
-    title: 'Flora Trail',
+    id: 'floral-trail',
+    title: 'Floral Trail',
     subtitle: 'Tulip Garden',
     coverImage: '/nature/flora-4.jpg',
     images: [
@@ -310,6 +311,20 @@ function NatureDetail({ item }) {
           <button onClick={() => setLightboxIdx(0)} className="flex items-center gap-1.5 border border-slate-200 rounded-md px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
             <Camera className="w-3.5 h-3.5 text-[#FF8C00]" /> {item.photoCount} photos
           </button>
+          <a
+            href={buildWhatsAppUrl(item.title)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-green-500 hover:bg-green-600 text-white rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+          >
+            <MessageCircle className="w-3.5 h-3.5" /> Enquire Now
+          </a>
+          <a
+            href={buildEmailUrl(item.title)}
+            className="flex items-center gap-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5" /> Email Query
+          </a>
         </div>
 
         {/* 3-image carousel with smooth crossfade */}
@@ -390,9 +405,6 @@ function NatureDetail({ item }) {
               >
                 <div className="relative h-28 overflow-hidden">
                   <img src={other.coverImage} alt={other.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <div className="absolute top-2 right-2 w-6 h-6 bg-white/80 rounded-full flex items-center justify-center">
-                    <Bookmark className="w-3 h-3 text-slate-600" />
-                  </div>
                 </div>
                 <div className="p-3">
                   <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1 group-hover:text-[#FF8C00] transition-colors">{other.title}</h4>
@@ -442,11 +454,11 @@ export default function Nature() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
       <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2400&auto=format&fit=crop&q=80)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/nature/1-6.jpg')" }}>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
-        </div>
+        </div>  
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">
-          <p className="text-sm uppercase tracking-widest text-orange-300 font-bold mb-3">Kashmiroffbeat</p>
+         
           <h1 className="font-serif text-5xl md:text-6xl mb-4 drop-shadow-lg">Nature Trails</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl">Explore Kashmir's pristine ecosystems, rare wildlife, and breathtaking floral wonders</p>
         </div>
@@ -469,9 +481,6 @@ export default function Nature() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <Bookmark className="w-4 h-4 text-slate-700" />
-                </div>
                 <div className="absolute bottom-3 left-3 flex gap-2">
                   <span className="bg-white/90 backdrop-blur-sm text-slate-800 px-2.5 py-1 rounded-full text-xs font-bold shadow">
                     {item.photoCount} photos
@@ -491,9 +500,26 @@ export default function Nature() {
                   </span>
                   <span className="bg-green-50 text-green-700 px-2.5 py-0.5 rounded-full text-xs font-medium">Nature</span>
                 </div>
-                <button className="mt-3 w-full py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 text-sm font-semibold hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-200">
-                  Enquiry on WhatsApp
-                </button>
+                <div className="flex gap-2 mt-3">
+                  <a
+                    href={buildWhatsAppUrl(item.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href={buildEmailUrl(item.title)}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email
+                  </a>
+                </div>
               </div>
             </Link>
           ))}

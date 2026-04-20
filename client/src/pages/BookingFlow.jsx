@@ -97,7 +97,7 @@ export default function BookingFlow() {
         </div>
         <h1 className="text-3xl font-bold mb-4">Booking Confirmed!</h1>
         <p className="text-slate-700 mb-2">Reference: <span className="text-accent-gold font-bold">{bookingResult.bookingRef}</span></p>
-        <p className="text-slate-400 mb-8">Total: <span className="text-white font-bold">₹{bookingResult.pricing?.totalAmount?.toLocaleString()}</span></p>
+        <p className="text-slate-400 mb-8">Your booking has been confirmed successfully.</p>
         <div className="flex gap-4 justify-center">
           <button onClick={() => navigate('/my-bookings')} className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold">View My Bookings</button>
           <button onClick={() => navigate('/')} className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl font-bold">Back to Home</button>
@@ -222,11 +222,6 @@ export default function BookingFlow() {
                       ))}
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-slate-600 uppercase font-bold">Starting from</p>
-                    <span className="text-2xl font-bold text-slate-900">₹{room.price.toLocaleString()}</span>
-                    <span className="text-slate-600 text-sm">/night</span>
-                  </div>
                 </div>
               </div>
             ))}
@@ -246,7 +241,6 @@ export default function BookingFlow() {
                       <div className="flex-1">
                         <div className="flex justify-between items-start">
                           <span className="text-sm font-bold text-slate-900">{addon.name}</span>
-                          <span className="text-xs font-bold text-primary">+₹{addon.price.toLocaleString()}</span>
                         </div>
                         <p className="text-xs text-slate-600">{addon.desc}</p>
                       </div>
@@ -260,24 +254,20 @@ export default function BookingFlow() {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-600">{selectedRoom?.name} ({nights} night{nights > 1 ? 's' : ''})</span>
-                    <span className="font-medium text-slate-900">₹{roomTotal.toLocaleString()}</span>
                   </div>
                   {addOnsTotal > 0 && (
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-600">Add-ons</span>
-                      <span className="font-medium text-slate-900">₹{addOnsTotal.toLocaleString()}</span>
                     </div>
                   )}
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-600">Taxes & Service Fees (18%)</span>
-                    <span className="font-medium text-slate-900">₹{taxes.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="border-t border-gray-300 pt-4 mb-6">
                   <div className="flex justify-between items-end">
                     <div>
                       <p className="text-xs text-slate-600 uppercase font-bold tracking-widest">Total Amount</p>
-                      <p className="text-3xl font-bold text-[#FF8C00]">₹{totalAmount.toLocaleString()}</p>
                     </div>
                     <div className="text-right">
                       <p className="text-[10px] text-green-500 font-bold uppercase">Free Cancellation</p>
@@ -412,24 +402,20 @@ export default function BookingFlow() {
                 <div className="pt-6 border-t border-white/5 space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-400">{selectedRoom?.name} ({nights}N)</span>
-                    <span className="font-medium">₹{roomTotal.toLocaleString()}</span>
                   </div>
                   {addOnsTotal > 0 && (
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-400">Add-ons</span>
-                      <span className="font-medium">₹{addOnsTotal.toLocaleString()}</span>
                     </div>
                   )}
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-400">Taxes & Fees</span>
-                    <span className="font-medium">₹{taxes.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="pt-6 border-t border-white/10">
                   <div className="flex justify-between items-end">
                     <div>
                       <p className="text-[10px] font-bold text-primary uppercase tracking-widest">Total Amount</p>
-                      <p className="text-3xl font-extrabold tracking-tighter">₹{totalAmount.toLocaleString()}</p>
                     </div>
                     <p className="text-[10px] text-slate-500 uppercase font-bold">Incl. GST</p>
                   </div>

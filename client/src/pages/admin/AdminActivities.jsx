@@ -33,7 +33,6 @@ function validateStep(step, form) {
     if (!form.coverImage.trim() && form.images.length === 0) errs.coverImage = 'At least one image is required';
   }
   if (step === 2) {
-    if (!form.pricing.perPerson) errs.perPerson = 'Price per person is required';
     if (!form.duration.trim())   errs.duration  = 'Duration is required';
   }
   return errs;
@@ -318,11 +317,6 @@ export default function AdminActivities() {
                       <ErrMsg msg={errors.duration} />
                     </div>
                     <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Person <span className="text-red-500">*</span></label>
-                      <input type="number" value={form.pricing.perPerson} onChange={e => setForm(f => ({...f, pricing: {...f.pricing, perPerson: e.target.value}}))} className={inputCls(errors.perPerson)} placeholder="₹" />
-                      <ErrMsg msg={errors.perPerson} />
-                    </div>
-                    <div>
                       <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Min Age</label>
                       <input type="number" value={form.ageLimit.min} onChange={e => setForm(f => ({...f, ageLimit: {min: Number(e.target.value)}}))} className={inputCls()} />
                     </div>
@@ -389,7 +383,6 @@ export default function AdminActivities() {
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Category</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Location</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm">Duration</th>
-                <th className="px-4 py-4 font-bold text-slate-500 text-sm">Price</th>
                 <th className="px-4 py-4 font-bold text-slate-500 text-sm text-right">Actions</th>
               </tr>
             </thead>
@@ -405,7 +398,6 @@ export default function AdminActivities() {
                   <td className="px-4 py-4 text-slate-600 capitalize">{activity.category.replace('-', ' ')}</td>
                   <td className="px-4 py-4 text-slate-600">{activity.location}</td>
                   <td className="px-4 py-4 text-slate-600">{activity.duration}</td>
-                  <td className="px-4 py-4 font-bold text-[#FF8C00]">₹{activity.pricing.perPerson.toLocaleString()}</td>
                   <td className="px-4 py-4 text-right">
                     <button onClick={() => openEdit(activity)} className="text-[#FF8C00] hover:text-[#FF8C00]/80 mr-3">
                       <span className="material-icons text-[18px]">edit</span>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import api from '../api';
 import ListingCard from '../components/ListingCard';
 
@@ -14,7 +14,7 @@ const categoryData = {
     bgLight: 'bg-orange-50',
     tagline: 'Adventure Sport',
     subtitle: 'Experience thrilling adventure sports in the heart of Kashmir — from snow-capped peaks to rushing rivers.',
-    heroImage: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=2400',
     highlights: [],
   },
   'himalayan-circuit': {
@@ -27,13 +27,8 @@ const categoryData = {
     bgLight: 'bg-emerald-50',
     tagline: 'Kashmir Himalayan Circuit',
     subtitle: 'Traverse the legendary Himalayan routes connecting the most breathtaking valleys, alpine meadows, and glacial lakes of Kashmir.',
-    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2400&auto=format&fit=crop&q=80',
-    highlights: [
-      { icon: 'route', title: 'Multi-Day Trails', desc: 'Curated circuits spanning 5–12 days through remote Himalayan passes' },
-      { icon: 'photo_camera', title: 'Scenic Vistas', desc: 'Panoramic views of Nanga Parbat, Harmukh, and the Great Lakes' },
-      { icon: 'local_florist', title: 'Alpine Meadows', desc: 'Walk through wildflower carpets at 12,000+ ft elevation' },
-      { icon: 'groups', title: 'Expert Guides', desc: 'Local mountaineers with decades of Himalayan experience' },
-    ],
+    heroImage: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/c1174e88-47e1-4aff-8e31-c94130c9a0ce/AA+suran+katori+sar.jpg',
+    highlights: [],
   },
   skiing: {
     label: 'Skiing',
@@ -45,7 +40,7 @@ const categoryData = {
     bgLight: 'bg-sky-50',
     tagline: 'Ski the Himalayas',
     subtitle: 'Gulmarg is Asia\'s premier ski destination with the world\'s highest gondola. Glide through pristine powder on slopes from beginner to black diamond.',
-    heroImage: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://wamu.org/wp-content/uploads/2019/03/gulmarg-4-_wide-e4eb7356bf7195fbaf7b00ec03326f7f09c47862.jpg',
     highlights: [
       { icon: 'ac_unit', title: 'Powder Paradise', desc: 'Average 14m annual snowfall — some of the deepest powder in Asia' },
       { icon: 'trending_up', title: 'All Skill Levels', desc: 'From gentle bunny slopes to extreme backcountry descents' },
@@ -63,7 +58,7 @@ const categoryData = {
     bgLight: 'bg-amber-50',
     tagline: 'Off The Beaten Path',
     subtitle: 'Discover Kashmir\'s hidden gems far from tourist trails — untouched villages, secret valleys, and experiences known only to locals.',
-    heroImage: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=2400&auto=format&fit=crop&q=80',
+    heroImage: '/gurev-4.jpg',
     highlights: [
       { icon: 'visibility_off', title: 'Hidden Destinations', desc: 'Places like Gurez, Lolab, and Bangus that few tourists ever see' },
       { icon: 'people', title: 'Local Immersion', desc: 'Stay with families, learn crafts, share meals with villagers' },
@@ -81,7 +76,7 @@ const categoryData = {
     bgLight: 'bg-violet-50',
     tagline: 'Fly Over Paradise',
     subtitle: 'Soar above the stunning Kashmir valley — glide over Dal Lake, rice paddies, and snow-kissed peaks with tandem and solo flights.',
-    heroImage: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://imgcld.yatra.com/ytimages/image/upload/t_seo_Holidays_w_1400_h_410_c_fill_g_auto_q_auto:good_f_jpg/v1438851658/Manali_DSC_2110.jpg',
     highlights: [
       { icon: 'air', title: 'Thermal Currents', desc: 'Perfect wind conditions for smooth, extended flights' },
       { icon: 'landscape', title: 'Aerial Views', desc: 'See Dal Lake, the Pir Panjal range, and Shankaracharya Temple from above' },
@@ -99,7 +94,7 @@ const categoryData = {
     bgLight: 'bg-orange-50',
     tagline: 'Conquer the Rocks',
     subtitle: 'From granite boulders in Aru Valley to challenging cliff faces in Pahalgam — test your limits on Kashmir\'s diverse rock formations.',
-    heroImage: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://www.tourmyindia.com/states/jammu-kashmir/image/mountain-climbing-kashmir.jpg',
     highlights: [
       { icon: 'fitness_center', title: 'All Grades', desc: 'Routes from 5a to 8b+ across multiple crags' },
       { icon: 'hardware', title: 'Full Equipment', desc: 'Harnesses, ropes, helmets, and belay devices provided' },
@@ -117,7 +112,7 @@ const categoryData = {
     bgLight: 'bg-indigo-50',
     tagline: 'The Ultimate Thrill',
     subtitle: 'Access untouched backcountry powder via helicopter — ski virgin slopes at 14,000+ ft that no lift can reach.',
-    heroImage: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://www.dailygoodmorningkashmir.com/wp-content/uploads/2024/01/Heli-Skiing-at-Gulmarg-a-new-tourist-attraction-768x416.jpg',
     highlights: [
       { icon: 'flight', title: 'Helicopter Access', desc: 'Reach remote peaks impossible to access by any other means' },
       { icon: 'ac_unit', title: 'Untouched Powder', desc: 'Ski slopes that have never been tracked before' },
@@ -135,7 +130,7 @@ const categoryData = {
     bgLight: 'bg-lime-50',
     tagline: 'Pedal Through Paradise',
     subtitle: 'Cycle through saffron fields, along pristine rivers, and over mountain passes — Kashmir\'s diverse terrain is a cyclist\'s dream.',
-    heroImage: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://www.kamzangjourneys.com/wp-content/uploads/2021/04/Ladakh-Cycling-Kashmir-Girls-Slider.jpg',
     highlights: [
       { icon: 'map', title: 'Scenic Routes', desc: 'Curated trails from leisurely lakeside rides to challenging mountain passes' },
       { icon: 'pedal_bike', title: 'Premium Bikes', desc: 'Trek & Specialized mountain bikes maintained to pro standards' },
@@ -153,7 +148,7 @@ const categoryData = {
     bgLight: 'bg-cyan-50',
     tagline: 'Ride the Rapids',
     subtitle: 'Navigate the roaring Lidder and Sindh rivers through pine-forested gorges — from gentle Grade II floats to intense Grade IV whitewater.',
-    heroImage: 'https://images.unsplash.com/photo-1530866495561-507c83e8bae6?w=2400&auto=format&fit=crop&q=80',
+    heroImage: 'https://travelmykashmir.com/wp-content/uploads/2024/06/River-Rafting-In-Kashmir.jpg',
     highlights: [
       { icon: 'waves', title: 'Grade II–IV Rapids', desc: 'Options for families, beginners, and adrenaline seekers' },
       { icon: 'shield', title: 'Full Safety Gear', desc: 'Life jackets, helmets, wetsuits, and certified rescue kayakers' },
@@ -164,7 +159,7 @@ const categoryData = {
 };
 
 const categories = [
-  '', 'himalayan-circuit', 'offbeat', 'skiing', 'paragliding', 'climbing', 'heli-skiing', 'cycling', 'rafting',
+  '', 'himalayan-circuit', 'offbeat', 'skiing', 'heli-skiing', 'paragliding', 'climbing', 'cycling', 'rafting',
 ];
 
 export default function Activities() {
@@ -217,7 +212,7 @@ export default function Activities() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/75" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">
-          <p className="text-sm uppercase tracking-widest text-orange-300 font-bold mb-3">Kashmiroffbeat</p>
+      
           <h1 className="font-serif text-5xl md:text-6xl mb-4 drop-shadow-lg">{catInfo.tagline}</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">{catInfo.subtitle}</p>
         </div>
@@ -277,7 +272,76 @@ export default function Activities() {
         </section>
       )}
 
-      {/* Activity Listings */}
+      {/* KHC Custom Section */}
+      {activeCategory === 'himalayan-circuit' && (
+        <section className="bg-white border-b border-slate-100">
+          <div className="max-w-5xl mx-auto px-6 py-16 text-center">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.6rem] text-slate-900 leading-tight mb-6">
+              A classic trek along magnificent mountain trails that encircle the Vale of Kashmir ensure Kashmir's rightful place on the Himalayan trekking map.
+            </h2>
+            <p className="text-slate-500 text-lg md:text-xl">A private initiative to support adventure travel in Kashmir</p>
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 pb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'About the KHC',
+                  desc: 'The KHC provides an opportunity to re-establish Kashmir\'s rightful place on the Himalayan map.',
+                  image: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/c1174e88-47e1-4aff-8e31-c94130c9a0ce/AA+suran+katori+sar.jpg',
+                  to: '/khc/about',
+                },
+                {
+                  title: 'The Route',
+                  desc: 'Details of the stages will be progressively uploaded with GPS readings, contour maps and a comprehensive summary.',
+                  image: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/b40ae2ae-3020-4f80-a9c6-4c63e5e1fa5a/Pir+Panjal+from+Dawa+.jpg',
+                  to: '/khc/route',
+                },
+                {
+                  title: 'The Map',
+                  desc: 'The map provides a snapshot of the Kashmir Himalayan Circuit trekking route. It will be refined to meet future requirements.',
+                  image: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/06f11de6-b746-4924-9e57-b9c4d5624b68/pexels-aliaksei-lepik-17955368.jpg',
+                  to: '/khc/map',
+                },
+                {
+                  title: 'Media',
+                  desc: 'Whatever it is, the way you tell your story online can make all the difference. Articles and stories from the press.',
+                  image: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/d256a2a9-915c-428c-a56e-555a3d701e5e/Media+alternative+.JPG',
+                  to: '/khc/media',
+                },
+                {
+                  title: 'Blog',
+                  desc: 'We welcome blogs from trekkers who have in particular completed some of the remoter sections of the KHC.',
+                  image: 'https://images.squarespace-cdn.com/content/v1/64d82289391a252015f03974/7a3f2bdd-cedd-4700-a8e1-cf7e678808b0/The+BlogJPG.JPG',
+                  to: '/khc/blog',
+                },
+                {
+                  title: 'Base Camp',
+                  desc: 'We welcome blogs from trekkers who have in particular completed some of the remoter sections of the KHC.',
+                  image: 'https://res.cloudinary.com/dyiffrkzh/image/upload/c_fill,f_auto,fl_progressive.strip_profile,g_center,h_400,q_auto,w_700/v1717570292/banbanjara/gxrxwlqcdmonwpbxkqww.jpg',
+                  to: '/khc/basecamp',
+                },
+              ].map((card, i) => (
+                <Link key={i} to={card.to} className="group text-center hover:-translate-y-1 transition-all duration-300">
+                  <div className="rounded-2xl overflow-hidden mb-4 aspect-[4/3] bg-slate-100 shadow-sm group-hover:shadow-xl transition-shadow duration-300">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{card.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{card.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Activity Listings — hidden for himalayan-circuit */}
+      {activeCategory !== 'himalayan-circuit' && (
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -319,14 +383,13 @@ export default function Activities() {
                 image={activity.coverImage}
                 title={activity.name}
                 description={activity.overview}
-                price={`₹${activity.pricing.perPerson.toLocaleString()}`}
-                priceUnit="/person"
                 tags={[activity.category, activity.location].filter(Boolean)}
               />
             ))}
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }

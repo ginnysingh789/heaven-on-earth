@@ -220,8 +220,8 @@ export default function CancellationPolicy() {
           <ul className="list-disc list-inside text-slate-300 space-y-2 ml-4">
             <li>Date changes are subject to availability and may incur additional charges</li>
             <li>Modifications must be requested at least 7 days before check-in/start date</li>
-            <li>A modification fee of ₹500-₹2000 may apply depending on the service type</li>
-            <li>Price differences (if any) will be charged or refunded accordingly</li>
+            <li>A modification fee may apply depending on the service type</li>
+            <li>Differences (if any) will be adjusted accordingly</li>
           </ul>
         </section>
 

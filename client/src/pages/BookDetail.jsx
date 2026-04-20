@@ -102,14 +102,8 @@ export default function BookDetail() {
               </div>
             )}
 
-            {/* Price & Purchase CTAs */}
+            {/* Purchase CTAs */}
             <div className="mt-auto pt-8 border-t border-slate-200">
-              {book.price?.amount && (
-                <div className="mb-6">
-                  <span className="price-label">Price</span>
-                  <div className="price-display"><span className="price-amount">₹{book.price.amount.toLocaleString()}</span></div>
-                </div>
-              )}
               {(book.purchaseLinks?.amazon || book.purchaseLinks?.flipkart || book.purchaseLinks?.other) && (
                 <div className="space-y-3">
                   <span className="price-label mb-3">Buy Now</span>

@@ -40,7 +40,7 @@ export default function MyBookings() {
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-48 h-40 md:h-auto overflow-hidden">
                   <img
-                    src={booking.hotel?.image || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400'}
+                    src={booking.hotel?.image || 'https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=400'}
                     alt={booking.hotel?.name}
                     className="w-full h-full object-cover"
                   />
@@ -73,7 +73,7 @@ export default function MyBookings() {
                     </div>
                     <div>
                       <p className="text-[10px] text-slate-600 uppercase font-bold">Total</p>
-                      <p className="font-bold text-[#FF8C00]">₹{booking.pricing?.totalAmount?.toLocaleString()}</p>
+                      <p className="font-bold text-[#FF8C00]">Confirmed</p>
                     </div>
                   </div>
                 </div>

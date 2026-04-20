@@ -53,7 +53,6 @@ function validateStep(step, form) {
   if (step === 2) {
     if (!form.startPoint.trim())         errs.startPoint = 'Start point is required';
     if (!form.endPoint.trim())           errs.endPoint = 'End point is required';
-    if (!form.pricing.perPerson)         errs.perPerson = 'Price per person is required';
     if (!form.altitude.max)              errs.altMax = 'Maximum altitude is required';
     if (!form.duration.nights)           errs.nights = 'Number of nights is required';
     if (!form.duration.days)             errs.days = 'Number of days is required';
@@ -400,12 +399,6 @@ export default function AdminTreks() {
                         <option value="advanced">Advanced</option>
                       </select>
                     </div>
-                    <div>
-                      <label className="text-xs font-bold text-slate-500 uppercase block mb-1">Price/Person <span className="text-red-500">*</span></label>
-                      <input type="number" value={form.pricing.perPerson} onChange={e => setForm(f => ({...f, pricing: {perPerson: e.target.value}}))}
-                        className={inputCls(errors.perPerson)} placeholder="₹" />
-                      <ErrMsg msg={errors.perPerson} />
-                    </div>
                   </div>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
@@ -561,7 +554,6 @@ export default function AdminTreks() {
                 <th className="px-4 py-3 font-bold text-slate-500 text-sm">Duration</th>
                 <th className="px-4 py-3 font-bold text-slate-500 text-sm">Difficulty</th>
                 <th className="px-4 py-3 font-bold text-slate-500 text-sm">Altitude</th>
-                <th className="px-4 py-3 font-bold text-slate-500 text-sm">Price</th>
                 <th className="px-4 py-3 font-bold text-slate-500 text-sm text-right">Actions</th>
               </tr>
             </thead>
@@ -587,7 +579,6 @@ export default function AdminTreks() {
                     }`}>{trek.difficulty}</span>
                   </td>
                   <td className="px-4 py-3 text-slate-500">{trek.altitude.max}m</td>
-                  <td className="px-4 py-3 font-bold text-[#FF8C00]">₹{trek.pricing.perPerson.toLocaleString()}</td>
                   <td className="px-4 py-3 text-right">
                     <button onClick={() => openEdit(trek)} className="text-[#FF8C00] hover:text-[#FF8C00]/80 mr-3 transition-colors">
                       <span className="material-icons text-[18px]">edit</span>

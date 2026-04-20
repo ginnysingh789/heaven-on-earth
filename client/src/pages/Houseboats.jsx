@@ -42,7 +42,7 @@ export default function Houseboats() {
       <div className="relative py-24 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=2400&auto=format&fit=crop&q=95)' }}
+          style={{ backgroundImage: 'url(https://i.pinimg.com/originals/66/b7/40/66b740425af2ffdeb83f79a7c4991ab4.jpg)' }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
         </div>
@@ -88,8 +88,6 @@ export default function Houseboats() {
                 image={houseboat.coverImage}
                 title={houseboat.name}
                 description={houseboat.description}
-                price={`₹${houseboat.pricing.perNight.toLocaleString()}`}
-                priceUnit="/night"
                 tags={[houseboat.category, houseboat.location].filter(Boolean)}
               />
             ))}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Film } from 'lucide-react';
+import { Facebook, Instagram, Film, Linkedin } from 'lucide-react';
 
 const XIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -15,8 +15,8 @@ const experienceTabs = [
     icon: 'park',
     title: 'Nature',
     desc: "Discover the untouched natural beauty of Kashmir's serene landscapes, where tranquility meets breathtaking scenery.",
-    tags: ['Birding', 'Wildlife', 'Apple Trail', 'Forest Trail', 'Angling', 'Eco Trail', 'Flora Trail'],
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=80',
+    tags: ['Birding', 'Wildlife', 'Apple Trail', 'Forest Trail', 'Angling', 'Eco Trail', 'Floral Trail'],
+    image: 'https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     key: 'heritage',
@@ -25,7 +25,7 @@ const experienceTabs = [
     title: 'Heritage',
     desc: "Explore the rich cultural legacy of Kashmir — from centuries-old temples and mosques to Mughal gardens and ancient shrines.",
     tags: ['Mughal Gardens', 'Temples', 'Mosques', 'Sufi Shrines', 'Old City Walks', 'Craft Villages'],
-    image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.pexels.com/photos/3581368/pexels-photo-3581368.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     key: 'adventure',
@@ -34,7 +34,7 @@ const experienceTabs = [
     title: 'Adventure',
     desc: "Push your limits with thrilling adventure sports across the Himalayan terrain — from skiing to white-water rafting.",
     tags: ['Skiing', 'Trekking', 'Rafting', 'Paragliding', 'Rock Climbing', 'Mountain Biking'],
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     key: 'border-tourism',
@@ -43,7 +43,7 @@ const experienceTabs = [
     title: 'Border Tourism',
     desc: "Visit the frontier regions of Kashmir — experience the unique culture and pristine beauty of border areas like Gurez and Keran.",
     tags: ['Gurez Valley', 'Keran', 'Teetwal', 'Uri', 'Tangdhar', 'LoC Viewpoints'],
-    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     key: 'photography',
@@ -52,7 +52,7 @@ const experienceTabs = [
     title: 'Photography',
     desc: "Capture the ethereal beauty of Kashmir through guided photography tours to the most photogenic locations.",
     tags: ['Landscape Shoots', 'Golden Hour Tours', 'Bird Photography', 'Cultural Portraits', 'Astro Photography'],
-    image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -85,6 +85,13 @@ const teamMembers = [
     name: 'Sameer Hamdani', role: 'Architectural historian', image: '/about/Mask-group-18.png',
     socials: [
       { icon: 'twitter', url: 'https://x.com/SameerHamdani' },
+    ],
+  },
+  {
+    name: 'Hazik Shah', role: 'Admin', image: '/about/Admin.jpeg',
+    socials: [
+      { icon: 'linkedin', url: 'https://www.linkedin.com/in/hazik-shah-554069199' },
+      { icon: 'instagram', url: 'https://www.instagram.com/hazikshah_' },
     ],
   },
 ];
@@ -191,6 +198,7 @@ export default function About() {
                           {s.icon === 'facebook' && <Facebook className="w-4 h-4 text-white" />}
                           {s.icon === 'instagram' && <Instagram className="w-4 h-4 text-white" />}
                           {s.icon === 'imdb' && <Film className="w-4 h-4 text-white" />}
+                          {s.icon === 'linkedin' && <Linkedin className="w-4 h-4 text-white" />}
                         </a>
                       ))}
                     </div>

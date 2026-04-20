@@ -6,9 +6,9 @@ import api from '../api';
 
 const heritageLinks = [
   { label: 'Downtown Heritage Walk', to: '/heritage/downtown-heritage-walk' },
-  { label: "Kashmir's Craftsmanship", to: '/heritage/kashmirs-craftsmanship' },
+  { label: 'Kashmir CraftSafari', to: '/heritage/kashmir-craftsafari' },
   { label: 'Monuments', to: '/heritage/monuments' },
-  { label: 'Spiritual Walk', to: '/heritage/spiritual-walk' },
+  { label: 'Sufi Circuit', to: '/heritage/sufi-circuit' },
   { label: 'Arts & Music', to: '/heritage/arts-and-music' },
 ];
 
@@ -18,7 +18,13 @@ const natureLinks = [
   { label: 'Wildlife', to: '/nature/wildlife' },
   { label: 'Apple Trail', to: '/nature/apple-trail' },
   { label: 'Fossil Trail', to: '/nature/fossil-trail' },
-  { label: 'Flora Trail', to: '/nature/flora-trail' },
+  { label: 'Floral Trail', to: '/nature/floral-trail' },
+];
+
+
+const photoshootLinks = [
+  { label: 'Pre-Wedding Photoshoot', to: '/photoshoot/pre-wedding' },
+  { label: 'Photographer\'s Paradise', to: '/photoshoot/photographers-paradise' },
 ];
 
 const adventureLinks = [
@@ -26,9 +32,9 @@ const adventureLinks = [
   { label: 'Offbeat', to: '/activities?category=offbeat' },
   { label: 'Trekking', to: '/trekking' },
   { label: 'Skiing', to: '/activities?category=skiing' },
+  { label: 'Heli Skiing', to: '/activities?category=heli-skiing' },
   { label: 'Paragliding', to: '/activities?category=paragliding' },
   { label: 'Rock Climbing', to: '/activities?category=climbing' },
-  { label: 'Heli Skiing', to: '/activities?category=heli-skiing' },
   { label: 'Cycling & Mountain Biking', to: '/activities?category=cycling' },
   { label: 'River Rafting', to: '/activities?category=rafting' },
 ];
@@ -44,10 +50,13 @@ export default function Navbar() {
   const [mobileHeritageOpen, setMobileHeritageOpen] = useState(false);
   const [mobileAdventureOpen, setMobileAdventureOpen] = useState(false);
   const [mobileNatureOpen, setMobileNatureOpen] = useState(false);
+  const [photoshootOpen, setPhotoshootOpen] = useState(false);
+  const [mobilePhotoshootOpen, setMobilePhotoshootOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const heritageRef = useRef(null);
   const adventureRef = useRef(null);
   const natureRef = useRef(null);
+  const photoshootRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -65,6 +74,8 @@ export default function Navbar() {
     setMobileHeritageOpen(false);
     setMobileAdventureOpen(false);
     setMobileNatureOpen(false);
+    setPhotoshootOpen(false);
+    setMobilePhotoshootOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -72,6 +83,7 @@ export default function Navbar() {
       if (heritageRef.current && !heritageRef.current.contains(e.target)) setHeritageOpen(false);
       if (adventureRef.current && !adventureRef.current.contains(e.target)) setAdventureOpen(false);
       if (natureRef.current && !natureRef.current.contains(e.target)) setNatureOpen(false);
+      if (photoshootRef.current && !photoshootRef.current.contains(e.target)) setPhotoshootOpen(false);
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -199,13 +211,13 @@ export default function Navbar() {
                     <Link to="/activities" className="block px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-slate-400 hover:bg-slate-50">All Activities</Link>
                     <div className="h-px bg-slate-100 mx-3 mb-1" />
                     {adventureLinks.map(link => (
-                      <Link
-                        key={link.to}
-                        to={link.to}
-                        className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-orange-50 hover:text-[#FF8C00] transition-colors"
-                      >
-                        {link.label}
-                      </Link>
+                        <Link
+                          key={link.to}
+                          to={link.to}
+                          className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-orange-50 hover:text-[#FF8C00] transition-colors"
+                        >
+                          {link.label}
+                        </Link>
                     ))}
                   </div>
                   </div>
@@ -239,9 +251,33 @@ export default function Navbar() {
                 )}
               </div>
 
-              <Link to="/packages" className="hover:text-primary transition-colors">Packages</Link>
-              <Link to="/hotels" className="hover:text-primary transition-colors">Hotels</Link>
-              <Link to="/homestays" className="hover:text-primary transition-colors">Homestays</Link>
+              <Link to="/border-tourism" className="hover:text-primary transition-colors">Border Tourism</Link>
+
+              {/* Photoshoot dropdown */}
+              <div ref={photoshootRef} className="relative" onMouseEnter={() => setPhotoshootOpen(true)} onMouseLeave={() => setPhotoshootOpen(false)}>
+                <button
+                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                >
+                  Photoshoot
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${photoshootOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {photoshootOpen && (
+                  <div className="absolute top-full left-0 pt-2 w-56 z-50">
+                  <div className="bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden py-1">
+                    {photoshootLinks.map(link => (
+                      <Link
+                        key={link.to}
+                        to={link.to}
+                        className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-orange-50 hover:text-[#FF8C00] transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                  </div>
+                )}
+              </div>
+
               <Link to="/about" className="hover:text-primary transition-colors">About</Link>
             </div>
 
@@ -315,7 +351,7 @@ export default function Navbar() {
                   <div className="pl-4 pb-1 space-y-1 border-l border-white/20 ml-1">
                     <Link to="/activities" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">All Activities</Link>
                     {adventureLinks.map(link => (
-                      <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">{link.label}</Link>
+                        <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">{link.label}</Link>
                     ))}
                   </div>
                 )}
@@ -331,6 +367,23 @@ export default function Navbar() {
                   <div className="pl-4 pb-1 space-y-1 border-l border-white/20 ml-1">
                     <Link to="/nature" onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">All Trails</Link>
                     {natureLinks.map(link => (
+                      <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">{link.label}</Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <Link to="/border-tourism" onClick={() => setMenuOpen(false)} className="block py-2 hover:text-primary">Border Tourism</Link>
+
+              {/* Photoshoot mobile accordion */}
+              <div>
+                <button onClick={() => setMobilePhotoshootOpen(o => !o)} className="flex items-center justify-between w-full py-2 hover:text-primary">
+                  <span>Photoshoot</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobilePhotoshootOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobilePhotoshootOpen && (
+                  <div className="pl-4 pb-1 space-y-1 border-l border-white/20 ml-1">
+                    {photoshootLinks.map(link => (
                       <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)} className="block py-1.5 text-sm text-slate-300 hover:text-primary">{link.label}</Link>
                     ))}
                   </div>
@@ -417,9 +470,6 @@ export default function Navbar() {
                           {item.type === 'destination' ? 'Destination' : `Hotel${item.destination ? ` · ${item.destination}` : ''}`}
                         </p>
                       </div>
-                      {item.price && (
-                        <div className="text-primary font-bold">₹{item.price.toLocaleString()}</div>
-                      )}
                     </button>
                   ))
                 ) : (

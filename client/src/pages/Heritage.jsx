@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Bookmark, Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2, MessageCircle } from 'lucide-react';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { Star, ArrowLeft, MapPin, Camera, ChevronLeft, ChevronRight, Video, Share2, MessageCircle, Mail } from 'lucide-react';
+import { buildWhatsAppUrl, buildEmailUrl } from '../utils/whatsapp';
 
 const heritageItems = [
   {
@@ -47,8 +47,8 @@ const heritageItems = [
     ],
   },
   {
-    id: 'kashmirs-craftsmanship',
-    title: "Kashmir's Craftsmanship",
+    id: 'kashmir-craftsafari',
+    title: "Kashmir CraftSafari",
     location: "Kashmir",
     description: "Embark on a voyage of discovery through Kashmir's rich tradition of handicrafts, where skilled artisans weave tales of heritage and craftsmanship through their intricate creations.",
     coverImage: "/heritage/craftman-3.jpg",
@@ -117,8 +117,8 @@ const heritageItems = [
     ],
   },
   {
-    id: 'spiritual-walk',
-    title: "Spiritual Walk",
+    id: 'sufi-circuit',
+    title: "Sufi Circuit",
     location: "Srinagar",
     description: "A transcendent journey through Sufi shrines, ancient temples, and sacred Gurudwaras across Jammu & Kashmir — where devotion transcends religious boundaries.",
     coverImage: "/heritage/walk-1.jpg",
@@ -261,6 +261,12 @@ function HeritageDetail({ item }) {
           >
             <MessageCircle className="w-3.5 h-3.5" /> Enquire Now
           </a>
+          <a
+            href={buildEmailUrl(item.title)}
+            className="flex items-center gap-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5" /> Email Query
+          </a>
         </div>
 
         {/* 3-image carousel with smooth crossfade */}
@@ -341,9 +347,6 @@ function HeritageDetail({ item }) {
               >
                 <div className="relative h-28 overflow-hidden">
                   <img src={other.coverImage} alt={other.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <div className="absolute top-2 right-2 w-6 h-6 bg-white/80 rounded-full flex items-center justify-center">
-                    <Bookmark className="w-3 h-3 text-slate-600" />
-                  </div>
                 </div>
                 <div className="p-3">
                   <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1 group-hover:text-[#FF8C00] transition-colors">{other.title}</h4>
@@ -393,7 +396,7 @@ export default function Heritage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Header */}
       <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1587474260584-136574528ed5?w=2400&auto=format&fit=crop&q=80)' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://www.tourmyindia.com/states/jammu-kashmir/image/heritage-jk.jpg)' }}>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-white">
@@ -426,10 +429,6 @@ export default function Heritage() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                {/* Bookmark */}
-                <div className="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <Bookmark className="w-4 h-4 text-slate-700" />
-                </div>
                 {/* Photos pill */}
                 <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-slate-900 px-3 py-1 rounded-full text-xs font-bold shadow flex items-center gap-1">
                   <span className="material-icons text-[13px]">photo_library</span>
@@ -463,18 +462,23 @@ export default function Heritage() {
 
                 {/* CTA */}
                 <div className="flex gap-2 mt-3">
-                  <button className="flex-1 py-2.5 rounded-full border border-slate-200 bg-white text-slate-900 text-sm font-semibold hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-200">
-                    Explore
-                  </button>
                   <a
                     href={buildWhatsAppUrl(item.title)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200"
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    Enquire
+                    WhatsApp
+                  </a>
+                  <a
+                    href={buildEmailUrl(item.title)}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email
                   </a>
                 </div>
               </div>

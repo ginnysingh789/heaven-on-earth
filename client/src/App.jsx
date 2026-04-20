@@ -26,6 +26,9 @@ import HouseboatDetail from './pages/HouseboatDetail';
 import ListHomestay from './pages/ListHomestay';
 import Heritage from './pages/Heritage';
 import Nature from './pages/Nature';
+import BorderTourism from './pages/BorderTourism';
+import Photoshoot from './pages/Photoshoot';
+import KashmirHimalayanCircuit from './pages/KashmirHimalayanCircuit';
 import Literature from './pages/Literature';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
@@ -98,6 +101,12 @@ export default function App() {
         <Route path="heritage/:id" element={<Heritage />} />
         <Route path="nature" element={<Nature />} />
         <Route path="nature/:id" element={<Nature />} />
+        <Route path="border-tourism" element={<BorderTourism />} />
+        <Route path="border-tourism/:id" element={<BorderTourism />} />
+        <Route path="photoshoot" element={<Photoshoot />} />
+        <Route path="photoshoot/:id" element={<Photoshoot />} />
+        <Route path="khc" element={<KashmirHimalayanCircuit />} />
+        <Route path="khc/:section" element={<KashmirHimalayanCircuit />} />
         <Route path="literature" element={<Literature />} />
         <Route path="articles" element={<Articles />} />
         <Route path="articles/:slug" element={<ArticleDetail />} />

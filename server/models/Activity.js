@@ -6,7 +6,7 @@ const activitySchema = new mongoose.Schema({
   category: { 
     type: String, 
     required: true,
-    enum: ['skiing', 'snowboarding', 'paragliding', 'water-sports', 'climbing', 'cycling', 'rafting', 'other']
+    enum: ['skiing', 'snowboarding', 'paragliding', 'water-sports', 'climbing', 'cycling', 'rafting', 'heli-skiing', 'himalayan-circuit', 'offbeat', 'other']
   },
   description: { type: String, required: true },
   overview: { type: String, required: true },
