@@ -65,7 +65,7 @@ export default function AdminSettings() {
 
             <div>
               <label className="block text-sm font-semibold text-slate-600 mb-2">
-                Message Template
+                Message \Template
               </label>
               <p className="text-xs text-slate-500 mb-2">
                 Use <code className="bg-slate-100 px-1.5 py-0.5 rounded text-green-600">{'{itemName}'}</code> as a placeholder — it will be replaced with the item name (hotel, trek, package, etc.)
