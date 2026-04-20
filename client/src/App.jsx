@@ -28,8 +28,6 @@ import Heritage from './pages/Heritage';
 import Nature from './pages/Nature';
 import BorderTourism from './pages/BorderTourism';
 import Photoshoot from './pages/Photoshoot';
-import BorderTourism from './pages/BorderTourism';
-import Photoshoot from './pages/Photoshoot';
 import KashmirHimalayanCircuit from './pages/KashmirHimalayanCircuit';
 import Literature from './pages/Literature';
 import Articles from './pages/Articles';
