@@ -41,8 +41,19 @@ export function buildWhatsAppUrl(itemName) {
 export function buildEmailUrl(itemName) {
   const { contactEmail } = getContactConfig();
   const subject = `Enquiry about ${itemName || 'your services'}`;
-  const body = `Hi Kashmir Offbeat,\n\nI'm interested in ${itemName || 'your services'}.\n\nCould you please share more details about:\n- Availability & dates\n- Packages & inclusions\n- Pickup/drop arrangements\n\nLooking forward to hearing from you!`;
-  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const body = [
+    'Hi Kashmir Offbeat,',
+    '',
+    `I'm interested in ${itemName || 'your services'}.`,
+    '',
+    'Could you please share more details about:',
+    '- Availability & dates',
+    '- Packages & inclusions',
+    '- Pickup/drop arrangements',
+    '',
+    'Looking forward to hearing from you!',
+  ].join('\n');
+  return `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export function getContactConfig() {
