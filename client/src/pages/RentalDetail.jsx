@@ -140,7 +140,7 @@ export default function RentalDetail() {
                 ENQUIRY ON WHATSAPP
                 <span className="material-icons text-lg">arrow_right_alt</span>
               </a>
-              <a href={buildEmailUrl(rental.name)}
+              <a href={buildEmailUrl(rental.name)} target="_blank" rel="noopener noreferrer"
                 className="btn-cta mb-4 no-underline" style={{ background: 'linear-gradient(135deg, #3b82f6, #2563eb)' }}>
                 <span className="material-icons text-lg">email</span>
                 ENQUIRY VIA EMAIL

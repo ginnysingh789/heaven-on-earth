@@ -76,6 +76,8 @@ export default function ListingCard({
           </a>
           <a
             href={buildEmailUrl(title)}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200"
           >

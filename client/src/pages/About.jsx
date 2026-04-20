@@ -88,7 +88,7 @@ const teamMembers = [
     ],
   },
   {
-    name: 'Hazik Shah', role: 'Admin', image: '/about/Admin.jpeg',
+    name: 'Hazik Shah', role: 'Admin', image: '/about/admin.png',
     socials: [
       { icon: 'linkedin', url: 'https://www.linkedin.com/in/hazik-shah-554069199' },
       { icon: 'instagram', url: 'https://www.instagram.com/hazikshah_' },
@@ -173,7 +173,7 @@ export default function About() {
             <p className="text-[#FF8C00] font-serif italic text-lg mb-2">Our Expertise</p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Meet Our Expert Team</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {teamMembers.map((member, i) => (
               <div key={i} className="group">
                 <div className="relative rounded-2xl overflow-hidden mb-4 aspect-[3/4] bg-slate-200">
