@@ -83,8 +83,5 @@ jobs:
             rm kashmir-booking.tar.gz
             docker compose up -d
 
-            # Seed the database (runs inside the container)
-            docker exec kashmir-booking node /app/server/seedActivities.js || echo "Seed skipped or already done"
-
             docker system prune -f
             echo "Deployment complete!"
