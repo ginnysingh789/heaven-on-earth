@@ -35,9 +35,8 @@ export default function Login() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-gray-200">
           <div className="text-center mb-8">
-            <span className="material-icons text-[#FF8C00] text-4xl mb-4 block">landscape</span>
-            <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
-            <p className="text-slate-600 text-sm mt-2">Sign in to your Kashmir Travels account</p>
+            <img src="/Asset 5@300x.png" alt="Kashmir Offbeat" className="h-14 w-auto mx-auto mb-4" />
+            <h1 className="text-2xl font-bold text-slate-900">Sign into KashmirOffBeat Account</h1>
           </div>
 
           {error && (
