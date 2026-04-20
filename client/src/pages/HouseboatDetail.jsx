@@ -162,7 +162,7 @@ export default function HouseboatDetail() {
                 ENQUIRY ON WHATSAPP
                 <span className="material-icons text-lg">arrow_right_alt</span>
               </a>
-              <a href={buildEmailUrl(houseboat.name)} target="_blank" rel="noopener noreferrer"
+              <a href={buildEmailUrl(houseboat.name)}
                 className="btn-cta mb-4 no-underline" style={{ background: 'linear-gradient(135deg, #3b82f6, #2563eb)' }}>
                 <span className="material-icons text-lg">email</span>
                 ENQUIRY VIA EMAIL

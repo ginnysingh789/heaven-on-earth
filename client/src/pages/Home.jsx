@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mountain, Home as HomeIcon, Ship, Bike, Landmark, BookOpen, Users, MapPin, Package, Star, MessageCircle, Mail } from 'lucide-react';
+import { Mountain, Home as HomeIcon, Ship, Bike, Landmark, BookOpen, Scissors, Users, MapPin, Package, Star, MessageCircle, Mail } from 'lucide-react';
 import api from '../api';
 import { buildWhatsAppUrl, buildEmailUrl } from '../utils/whatsapp';
 import HotelCard from '../components/HotelCard';
@@ -111,12 +111,13 @@ export default function Home() {
   };
 
   const quickLinks = [
-    { icon: Mountain, label: 'Trekking', path: '/trekking', color: 'bg-blue-500/10', iconColor: 'text-blue-400', delay: '0s' },
-    { icon: HomeIcon, label: 'Homestays', path: '/homestays', color: 'bg-green-500/10', iconColor: 'text-green-400', delay: '0.1s' },
-    { icon: Ship, label: 'Houseboats', path: '/houseboats', color: 'bg-cyan-500/10', iconColor: 'text-cyan-400', delay: '0.2s' },
-    { icon: Bike, label: 'Adventure Sport', path: '/activities', color: 'bg-purple-500/10', iconColor: 'text-purple-400', delay: '0.3s' },
-    { icon: Landmark, label: 'Heritage', path: '/heritage', color: 'bg-orange-500/10', iconColor: 'text-orange-400', delay: '0.4s' },
-    { icon: BookOpen, label: 'Literature', path: '/literature', color: 'bg-pink-500/10', iconColor: 'text-pink-400', delay: '0.5s' }
+    { icon: Scissors, label: 'Kashmir Craft Safari', path: '/heritage/kashmir-craftsafari', color: 'bg-rose-500/10', iconColor: 'text-rose-400', delay: '0s' },
+    { icon: Mountain, label: 'Trekking', path: '/trekking', color: 'bg-blue-500/10', iconColor: 'text-blue-400', delay: '0.1s' },
+    { icon: HomeIcon, label: 'Homestays', path: '/homestays', color: 'bg-green-500/10', iconColor: 'text-green-400', delay: '0.2s' },
+    { icon: Ship, label: 'Houseboats', path: '/houseboats', color: 'bg-cyan-500/10', iconColor: 'text-cyan-400', delay: '0.3s' },
+    { icon: Bike, label: 'Adventure Sport', path: '/activities', color: 'bg-purple-500/10', iconColor: 'text-purple-400', delay: '0.4s' },
+    { icon: Landmark, label: 'Heritage', path: '/heritage', color: 'bg-orange-500/10', iconColor: 'text-orange-400', delay: '0.5s' },
+    { icon: BookOpen, label: 'Literature', path: '/literature', color: 'bg-pink-500/10', iconColor: 'text-pink-400', delay: '0.6s' }
   ];
 
   return (
@@ -169,7 +170,7 @@ export default function Home() {
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-10">Explore Kashmir</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
             {quickLinks.map((link, i) => {
               const IconComponent = link.icon;
               return (
@@ -400,7 +401,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(pkg.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(pkg.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(pkg.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>
@@ -448,7 +449,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(trek.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(trek.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(trek.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>
@@ -500,7 +501,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(home.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(home.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(home.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>

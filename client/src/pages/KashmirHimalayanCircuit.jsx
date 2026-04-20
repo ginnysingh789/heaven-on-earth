@@ -118,7 +118,6 @@ function EnquiryForm({ sectionTitle }) {
             </a>
             <a
               href={buildEmailUrl(`Kashmir Himalayan Circuit - ${sectionTitle}`)}
-              target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white text-sm font-bold rounded-full hover:bg-blue-600 transition-all shadow-lg hover:shadow-xl"
             >
               <Mail className="w-4 h-4" /> Email

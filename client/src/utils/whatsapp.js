@@ -53,7 +53,7 @@ export function buildEmailUrl(itemName) {
     '',
     'Looking forward to hearing from you!',
   ].join('\n');
-  return `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${encodeURIComponent(contactEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export function getContactConfig() {
