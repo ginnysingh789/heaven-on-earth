@@ -1,10 +1,31 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mountain, Home as HomeIcon, Ship, Bike, Landmark, BookOpen, Scissors, Users, MapPin, Package, Star, MessageCircle, Mail } from 'lucide-react';
+import { Mountain, Home as HomeIcon, Ship, Bike, Landmark, BookOpen, Users, MapPin, Package, Star, MessageCircle, Mail } from 'lucide-react';
 import api from '../api';
 import { buildWhatsAppUrl, buildEmailUrl } from '../utils/whatsapp';
 import HotelCard from '../components/HotelCard';
 import CustomSelect from '../components/CustomSelect';
+
+const SpoolNeedleIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 800 800"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="38"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    {/* Needle body - diagonal line */}
+    <line x1="120" y1="120" x2="700" y2="700" />
+    {/* Needle eye - loop at top-left */}
+    <path d="M150 100C100 50 50 100 100 150" />
+    {/* Thread - looping curves through needle eye and around */}
+    <path d="M100 150C180 250 400 200 500 100C600 0 700 80 650 200C600 320 350 400 200 500C50 600 100 700 250 680C400 660 550 550 500 400" />
+  </svg>
+);
 
 export default function Home() {
   const navigate = useNavigate();
@@ -111,7 +132,7 @@ export default function Home() {
   };
 
   const quickLinks = [
-    { icon: Scissors, label: 'Kashmir Craft Safari', path: '/heritage/kashmir-craftsafari', color: 'bg-rose-500/10', iconColor: 'text-rose-400', delay: '0s' },
+    { icon: SpoolNeedleIcon, label: 'Kashmir Craft Safari', path: '/heritage/kashmir-craftsafari', color: 'bg-rose-500/10', iconColor: 'text-rose-400', delay: '0s' },
     { icon: Mountain, label: 'Trekking', path: '/trekking', color: 'bg-blue-500/10', iconColor: 'text-blue-400', delay: '0.1s' },
     { icon: HomeIcon, label: 'Homestays', path: '/homestays', color: 'bg-green-500/10', iconColor: 'text-green-400', delay: '0.2s' },
     { icon: Ship, label: 'Houseboats', path: '/houseboats', color: 'bg-cyan-500/10', iconColor: 'text-cyan-400', delay: '0.3s' },
