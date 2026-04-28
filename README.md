@@ -38,10 +38,6 @@ CLOUDINARY_API_KEY=your_key
 CLOUDINARY_API_SECRET=your_secret
 ```
 
-## Demo Credentials
-
-- **Admin**: admin@kashmirtravels.com / `admin123`
-- **User**: user@test.com / `user123`
 
 ## Project Structure
 
