@@ -422,7 +422,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(pkg.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(pkg.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(pkg.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>
@@ -470,7 +470,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(trek.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(trek.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(trek.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>
@@ -522,7 +522,7 @@ export default function Home() {
                     <a href={buildWhatsAppUrl(home.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold transition-all duration-200">
                       <MessageCircle className="w-4 h-4" /> WhatsApp
                     </a>
-                    <a href={buildEmailUrl(home.name)} onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+                    <a href={buildEmailUrl(home.name)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
                       <Mail className="w-4 h-4" /> Email
                     </a>
                   </div>

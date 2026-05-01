@@ -109,6 +109,7 @@ function BorderTourismDetail({ item }) {
           </a>
           <a
             href={buildEmailUrl(item.title)}
+            target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-md px-3 py-1.5 text-xs font-medium transition-colors"
           >
             <Mail className="w-3.5 h-3.5" /> Email Query
@@ -196,6 +197,7 @@ function BorderTourismDetail({ item }) {
             </a>
             <a
               href={buildEmailUrl('Border Tourism')}
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full transition-all"
             >
               <Mail className="w-5 h-5" /> Email Query
@@ -301,6 +303,7 @@ export default function BorderTourism() {
                   </a>
                   <a
                     href={buildEmailUrl(item.title)}
+                    target="_blank" rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                     className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200"
                   >
