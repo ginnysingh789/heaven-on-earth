@@ -132,6 +132,10 @@ const api = {
   adminCreateBook: (body) => fetch(`${API_BASE}/books/admin/create`, { method: 'POST', headers: getHeaders(), body: JSON.stringify(body) }).then(handleResponse),
   adminUpdateBook: (id, body) => fetch(`${API_BASE}/books/admin/${id}`, { method: 'PUT', headers: getHeaders(), body: JSON.stringify(body) }).then(handleResponse),
   adminDeleteBook: (id) => fetch(`${API_BASE}/books/admin/${id}`, { method: 'DELETE', headers: getHeaders() }).then(handleResponse),
+
+  // Site Settings (WhatsApp + contact info shown to all visitors)
+  getSettings: () => fetch(`${API_BASE}/settings`, { headers: getHeaders() }).then(handleResponse),
+  adminUpdateSettings: (body) => fetch(`${API_BASE}/settings`, { method: 'PUT', headers: getHeaders(), body: JSON.stringify(body) }).then(handleResponse),
 };
 
 export default api;

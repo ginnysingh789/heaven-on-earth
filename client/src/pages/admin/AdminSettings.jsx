@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getWhatsAppConfig, saveWhatsAppConfig, getContactConfig, saveContactConfig } from '../../utils/whatsapp';
+import {
+  getWhatsAppConfig,
+  getContactConfig,
+  fetchSettingsFromServer,
+  saveSettingsToServer,
+} from '../../utils/whatsapp';
 
 export default function AdminSettings() {
   const [phone, setPhone] = useState('');
@@ -7,22 +12,40 @@ export default function AdminSettings() {
   const [contactPhone, setContactPhone] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const config = getWhatsAppConfig();
-    setPhone(config.phone);
-    setTemplate(config.template);
-    const contact = getContactConfig();
-    setContactPhone(contact.contactPhone);
-    setContactEmail(contact.contactEmail);
+    let cancelled = false;
+    // Pull the latest from the server so we don't edit stale localStorage values.
+    fetchSettingsFromServer().finally(() => {
+      if (cancelled) return;
+      const config = getWhatsAppConfig();
+      const contact = getContactConfig();
+      setPhone(config.phone);
+      setTemplate(config.template);
+      setContactPhone(contact.contactPhone);
+      setContactEmail(contact.contactEmail);
+    });
+    return () => { cancelled = true; };
   }, []);
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    saveWhatsAppConfig({ phone: phone.trim(), template: template.trim() });
-    saveContactConfig({ contactPhone: contactPhone.trim(), contactEmail: contactEmail.trim() });
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+    setError('');
+    setSaving(true);
+    try {
+      await saveSettingsToServer({
+        whatsapp: { phone: phone.trim(), template: template.trim() },
+        contact: { contactPhone: contactPhone.trim(), contactEmail: contactEmail.trim() },
+      });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch (err) {
+      setError(err.message || 'Failed to save settings');
+    } finally {
+      setSaving(false);
+    }
   };
 
   const previewMessage = template.replace(/\{itemName\}/g, 'Dal Lake Houseboat Stay');
@@ -139,18 +162,25 @@ export default function AdminSettings() {
         </div>
 
         {/* Save Button */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap">
           <button
             type="submit"
-            className="px-8 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-all duration-200 flex items-center gap-2"
+            disabled={saving}
+            className="px-8 py-3 bg-green-600 hover:bg-green-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-200 flex items-center gap-2"
           >
             <span className="material-icons text-lg">save</span>
-            Save Settings
+            {saving ? 'Saving...' : 'Save Settings'}
           </button>
           {saved && (
-            <span className="flex items-center gap-1.5 text-green-500 font-medium text-sm animate-pulse">
+            <span className="flex items-center gap-1.5 text-green-600 font-medium text-sm animate-pulse">
               <span className="material-icons text-base">check_circle</span>
               Settings saved successfully!
+            </span>
+          )}
+          {error && (
+            <span className="flex items-center gap-1.5 text-red-600 font-medium text-sm">
+              <span className="material-icons text-base">error</span>
+              {error}
             </span>
           )}
         </div>

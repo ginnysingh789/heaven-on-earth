@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAuth } from './context/AuthContext';
+import { useSettingsVersion } from './context/SettingsContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Hotels from './pages/Hotels';
@@ -75,10 +76,11 @@ function AdminRoute({ children }) {
 }
 
 export default function App() {
+  const settingsVersion = useSettingsVersion();
   return (
     <>
       <ScrollToTop />
-      <Routes>
+      <Routes key={settingsVersion}>
         <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="hotels" element={<Hotels />} />

@@ -4,6 +4,7 @@
   "description": "Kashmir Travel & Hotel Booking Platform",
   "scripts": {
     "server": "node server/index.js",
+    
     "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "seed": "node server/seed.js",
