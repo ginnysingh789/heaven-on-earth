@@ -1,4 +1,4 @@
-# Kashmir Travels
+# Kashmir Travel
 
 Full-stack MERN travel booking platform for Kashmir — hotels, packages, treks, homestays, houseboats, activities, rentals, articles, and books.
 
