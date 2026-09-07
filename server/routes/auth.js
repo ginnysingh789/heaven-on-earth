@@ -4,13 +4,14 @@ const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const { protect } = require('../middleware/auth');
+const { authRateLimiter } = require('../middleware/rateLimit');
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
 
 // POST /api/auth/register
-router.post('/register', [
+router.post('/register', authRateLimiter, [
   body('name').trim().notEmpty().withMessage('Name is required'),
   body('email').isEmail().withMessage('Valid email is required'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters')
@@ -39,7 +40,7 @@ router.post('/register', [
 });
 
 // POST /api/auth/login
-router.post('/login', [
+router.post('/login', authRateLimiter, [
   body('email').isEmail().withMessage('Valid email is required'),
   body('password').notEmpty().withMessage('Password is required')
 ], async (req, res) => {

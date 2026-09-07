@@ -8,6 +8,10 @@ dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 const app = express();
 
+// Trust the nginx reverse proxy so req.ip reflects the real client IP
+// (needed for correct per-client rate limiting).
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 

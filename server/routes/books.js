@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { escapeRegex } = require('../utils/regex');
 const Book = require('../models/Book');
 const { protect, admin } = require('../middleware/auth');
 
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
     const filter = {};
     
     if (search) {
-      const regex = new RegExp(search, 'i');
+      const regex = new RegExp(escapeRegex(search), 'i');
       filter.$or = [
         { title: regex },
         { author: regex },
@@ -20,7 +21,7 @@ router.get('/', async (req, res) => {
     }
     if (category) filter.category = category;
     if (language) filter.language = language;
-    if (author) filter.author = new RegExp(author, 'i');
+    if (author) filter.author = new RegExp(escapeRegex(author), 'i');
     if (featured === 'true') filter.isFeatured = true;
 
     const books = await Book.find(filter)

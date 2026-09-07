@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { escapeRegex } = require('../utils/regex');
 const Hotel = require('../models/Hotel');
 
 // GET /api/hotels
@@ -8,7 +9,7 @@ router.get('/', async (req, res) => {
     const { destination, category, minPrice, maxPrice, featured, search } = req.query;
     const filter = { isActive: true };
     if (search) {
-      const regex = new RegExp(search, 'i');
+      const regex = new RegExp(escapeRegex(search), 'i');
       filter.$or = [
         { name: regex },
         { description: regex },
