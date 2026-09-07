@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { escapeRegex } = require('../utils/regex');
 const Article = require('../models/Article');
 const { protect, admin } = require('../middleware/auth');
 
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
     const filter = { isPublished: true };
     
     if (search) {
-      const regex = new RegExp(search, 'i');
+      const regex = new RegExp(escapeRegex(search), 'i');
       filter.$or = [
         { title: regex },
         { excerpt: regex },
